@@ -13,6 +13,7 @@ function setup() {
 	tower.push(piece);
 }
 
+//restart the game when lost, called after hitting ENTER.
 function losted() {
 	lost = true;
 	tower = [];
@@ -27,6 +28,7 @@ function draw() {
 		tower[i].update();
 		tower[i].show();
 	}
+	//game over screen when lost.
 	if (lost) {
 		push();
 		textSize(60);
@@ -40,6 +42,7 @@ function draw() {
 	text(score, 35, 35);
 }
 
+//object for the base block
 function base() {
 	this.x = width/2;
 	this.y = height - 40;
@@ -51,15 +54,20 @@ function base() {
 	}
 }
 
+
 function keyPressed() {
 	if (key == " " && !lost) {
+		//creation of new piece with function in piece constructor;
 		var npiece = piece.stoping(before);
+		//game over check.
 		if (npiece.size < 0) {
 			lost = true;
 			return;
 		}
+		// to keep control of previous piece
 		before = piece;
 		tower.push(npiece);
+		// keep control of new piece.
 		piece = npiece;
 		score++;
 	}
@@ -69,6 +77,7 @@ function keyPressed() {
 	}
 }
 
+//"camera" movement
 function screenUpdate() {
 	if (piece.y < 200) {
 		for(var k = tower.length-1; k>=0; k--) {

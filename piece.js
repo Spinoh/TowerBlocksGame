@@ -8,6 +8,7 @@ function Piece(x,y, size, mov, vel) {
 	this.col = color(random(255),random(255),random(255));
 }
 
+//piece movement
 Piece.prototype.update = function() {
 	if(this.moving) {
 		if(this.offScreen()) {
@@ -17,12 +18,14 @@ Piece.prototype.update = function() {
 	}
 }
 
+//piece display
 Piece.prototype.show = function() {
 	fill(this.col);
 	rectMode(CENTER);
 	rect(this.x,this.y, this.size, 30);
 }
 
+//keep piece inside canvas
 Piece.prototype.offScreen = function() {
 	if(this.x + (this.size/2) >= width || this.x - (this.size/2) <= 0) {
 		return true;
@@ -30,6 +33,7 @@ Piece.prototype.offScreen = function() {
 	return false;
 }
 
+//stopping piece and making new one
 Piece.prototype.stoping = function(bef) {
 	this.moving = false;
 	var sz = px = 0;
