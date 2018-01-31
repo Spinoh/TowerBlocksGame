@@ -1,6 +1,6 @@
 # TowerBlocksGame
 
-Game of building a tower by mounting moving blocks on top of each other. 
+Based on the well known tower block game. My version, just for practice.
 Made with p5.js 
 
 Controls:
